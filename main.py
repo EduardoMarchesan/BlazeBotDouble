@@ -1,27 +1,36 @@
-import telebot
 import requests
-
-
-key_token="6507452851:AAE76zaxNriJN_cdWiE1MXVngCMnygY7CPk"
-
-
-
-
 import requests
 from datetime import *
 import time
+
+
+# Chave de autenticação para acessar o Bot  do Telegram
+key_token="6507452851:AAE76zaxNriJN_cdWiE1MXVngCMnygY7CPk"
+
+
+def envio(mensagem):
+    """
+        Envia uma mensagem para um chat no Telegram.
+
+        Args:
+            mensagem (str): A mensagem a ser enviada.
+
+        Returns:
+            None
+    """
+    chat_id="-1001873780014"  # ID do chat no Telegram
+    URL_telegram = 'https://api.telegram.org/bot'+key_token+'/sendMessage?chat_id='+chat_id+'&text='+mensagem
+    requests.get(URL_telegram)
+
 
 aposta=''
 vitoria=0
 derrota=0
 
+# Loop principal
 while True:
-    def envio():
-        #chat_id="740375451"
-        chat_id="-1001873780014"
-        message = aposta_seg
-        URL_telegram = 'https://api.telegram.org/bot'+key_token+'/sendMessage?chat_id='+chat_id+'&text='+message
-        requests.get(URL_telegram)
+    # Função para enviar mensagens para o chat no Telegram utilizando o bot
+    
 
 
 
@@ -43,7 +52,7 @@ while True:
 
     #print(resultado["records"][0]["color"])
     lista=[]
-    for i in range(0,5):
+    for i in range(0,3):
         cor=f"{resultado['records'][i]['color']}"
         lista.append(cor)
 
@@ -51,33 +60,33 @@ while True:
     if aposta=="red":
         if aposta!=lista[0]:
             derrota+=1
+            envio(mensagem="Derrota")
             aposta=''
         else:
             vitoria+=1
+            envio(mensagem="Vitoria")
             aposta=''
     elif aposta=='black':
         if aposta!=lista[0]:
             derrota+=1
+            envio(mensagem="Derrota")
             aposta=''
         else:
             vitoria+=1
+            envio(mensagem="Vitoria")
             aposta=''
 
     
     unique_cor=set(lista)
     if len(set(lista))==1:
         if 'red' in unique_cor:
-            aposta_seg=f"""\U000026AB
-Vitorias={vitoria}
-Derrotas={derrota}"""
+            mensagem="\U000026AB"
             aposta='black'
-            envio()
+            envio(mensagem=mensagem)
         elif 'black' in unique_cor:
-            aposta_seg=f"""\U0001F534
-Vitorias={vitoria}
-Derrotas={derrota}"""
+            mensagem="\U0001F534"
             aposta='red'
-            envio()
+            envio(mensagem=mensagem)
 
     time.sleep(30)
 
