@@ -1,0 +1,36 @@
+The code above is a Python script that includes inline documentation. Here is the documentation for each part of the code:
+
+1. Importing necessary modules:
+   - `import requests`: This module allows sending HTTP requests in Python.
+   - `from datetime import *`: This module provides classes for manipulating dates and times.
+   - `import time`: This module provides various time-related functions.
+
+2. Setting up the authentication key for accessing the Telegram Bot:
+   - `key_token`: A string variable that stores the authentication key/token for accessing the Telegram Bot.
+
+3. Defining a function for sending messages to a Telegram chat:
+   - `envio(mensagem)`: This function sends a message to a chat in Telegram.
+   - Args:
+     - `mensagem (str)`: The message to be sent.
+   - Returns:
+     - None
+
+4. Initializing variables:
+   - `aposta`: A string variable that stores the current bet color.
+   - `vitoria`: An integer variable that stores the number of wins.
+   - `derrota`: An integer variable that stores the number of losses.
+
+5. Main loop:
+   - This loop runs indefinitely until interrupted.
+   - It performs the following steps in each iteration:
+     - Get the current date and time.
+     - Format the date and time strings.
+     - Construct the URL to retrieve the results of roulette games.
+     - Send a GET request to the URL and retrieve the JSON response.
+     - Process the results by extracting the colors of the previous games.
+     - Check if the current bet color matches the first color in the list of previous games.
+     - Update the win or loss count accordingly.
+     - Send a message to the Telegram chat with the result of the last bet.
+     - Check if all the colors in the list are the same.
+     - If all colors are the same, send a signal for a new bet based on the opposite color.
+     - Wait for 30 seconds before the next iteration.
