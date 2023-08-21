@@ -5,7 +5,7 @@ import time
 
 
 # Chave de autenticação para acessar o Bot  do Telegram
-key_token="6507452851:AAE76zaxNriJN_cdWiE1MXVngCMnygY7CPk"
+key_token="xxxxxxxxxxxxxxxxxxx" #Token do seu Bot do Telegram
 
 
 def envio(mensagem):
